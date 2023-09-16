@@ -15,7 +15,8 @@ export default function Capsules() {
   // console.los(capsuleData);
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState(null);
-  const [selectedValue, setselectedValue] = useState(null);
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [showSelect, setShowSelect] = useState(false);
   const numberOfItem = 3;
   const lastIndex = currentPage * numberOfItem;
   const firstIndex = (currentPage - 1) * numberOfItem;
@@ -32,7 +33,7 @@ export default function Capsules() {
           flight: 7,
         },
       ],
-      landings: 1,
+      landings: 0,
       type: "Dragon 1.0",
       details: "Reentered after three weeks in orbit",
       reuse_count: 0,
@@ -41,7 +42,7 @@ export default function Capsules() {
       capsule_serial: "C102",
       capsule_id: "dragon1",
       status: "retired",
-      original_launch: "2012-05-22T07:44:00.000Z",
+      original_launch: "2012-05-02T07:44:00.000Z",
       original_launch_unix: 1335944640,
       missions: [
         {
@@ -89,6 +90,192 @@ export default function Capsules() {
       reuse_count: 0,
     },
     {
+      capsule_serial: "C105",
+      capsule_id: "dragon1",
+      status: "unknown",
+      original_launch: "2014-04-18T19:25:00.000Z",
+      original_launch_unix: 1397849100,
+      missions: [
+        {
+          name: "CRS-3",
+          flight: 14,
+        },
+      ],
+      landings: 1,
+      type: "Dragon 1.1",
+      details: "First Dragon v1.1 capsule",
+      reuse_count: 0,
+    },
+    {
+      capsule_serial: "C106",
+      capsule_id: "dragon1",
+      status: "active",
+      original_launch: "2014-09-21T05:52:00.000Z",
+      original_launch_unix: 1411278720,
+      missions: [
+        {
+          name: "CRS-4",
+          flight: 18,
+        },
+        {
+          name: "CRS-11",
+          flight: 41,
+        },
+      ],
+      landings: 2,
+      type: "Dragon 1.1",
+      details: "First Dragon capsule to be reused",
+      reuse_count: 1,
+    },
+    {
+      capsule_serial: "C107",
+      capsule_id: "dragon1",
+      status: "unknown",
+      original_launch: "2015-01-10T09:47:00.000Z",
+      original_launch_unix: 1420883220,
+      missions: [
+        {
+          name: "CRS-5",
+          flight: 19,
+        },
+      ],
+      landings: 1,
+      type: "Dragon 1.1",
+      details: null,
+      reuse_count: 0,
+    },
+    {
+      capsule_serial: "C108",
+      capsule_id: "dragon1",
+      status: "active",
+      original_launch: "2015-04-14T20:10:00.000Z",
+      original_launch_unix: 1429042200,
+      missions: [
+        {
+          name: "CRS-6",
+          flight: 22,
+        },
+        {
+          name: "CRS-13",
+          flight: 51,
+        },
+      ],
+      landings: 2,
+      type: "Dragon 1.1",
+      details: "Second Dragon capsule to be reused",
+      reuse_count: 1,
+    },
+    {
+      capsule_serial: "C109",
+      capsule_id: "dragon1",
+      status: "destroyed",
+      original_launch: "2015-06-28T14:21:00.000Z",
+      original_launch_unix: 1435501260,
+      missions: [
+        {
+          name: "CRS-7",
+          flight: 24,
+        },
+      ],
+      landings: 0,
+      type: "Dragon 1.1",
+      details: "Destroyed on impact after F9 launch failure",
+      reuse_count: 0,
+    },
+    {
+      capsule_serial: "C110",
+      capsule_id: "dragon1",
+      status: "active",
+      original_launch: "2016-04-08T20:43:00.000Z",
+      original_launch_unix: 1460148180,
+      missions: [
+        {
+          name: "CRS-8",
+          flight: 28,
+        },
+        {
+          name: "CRS-14",
+          flight: 59,
+        },
+      ],
+      landings: 2,
+      type: "Dragon 1.1",
+      details: null,
+      reuse_count: 1,
+    },
+    {
+      capsule_serial: "C111",
+      capsule_id: "dragon1",
+      status: "active",
+      original_launch: "2016-07-18T04:45:00.000Z",
+      original_launch_unix: 1468817100,
+      missions: [
+        {
+          name: "CRS-9",
+          flight: 32,
+        },
+        {
+          name: "CRS-15",
+          flight: 64,
+        },
+      ],
+      landings: 2,
+      type: "Dragon 1.1",
+      details: null,
+      reuse_count: 1,
+    },
+    {
+      capsule_serial: "C112",
+      capsule_id: "dragon1",
+      status: "active",
+      original_launch: "2017-02-19T14:39:00.000Z",
+      original_launch_unix: 1487515140,
+      missions: [
+        {
+          name: "CRS-10",
+          flight: 36,
+        },
+        {
+          name: "CRS-16",
+          flight: 72,
+        },
+      ],
+      landings: 2,
+      type: "Dragon 1.1",
+      details: null,
+      reuse_count: 1,
+    },
+    {
+      capsule_serial: "C113",
+      capsule_id: "dragon1",
+      status: "active",
+      original_launch: "2017-08-14T16:31:00.000Z",
+      original_launch_unix: 1502728260,
+      missions: [
+        {
+          name: "CRS-12",
+          flight: 45,
+        },
+      ],
+      landings: 1,
+      type: "Dragon 1.1",
+      details: "The last newly manufactured Dragon 1",
+      reuse_count: 0,
+    },
+    {
+      capsule_serial: "C201",
+      capsule_id: "dragon2",
+      status: "active",
+      original_launch: null,
+      original_launch_unix: null,
+      missions: [],
+      landings: 0,
+      type: "Dragon 2.0",
+      details:
+        "Pressure vessel used for Dragon 2 structural testing. Rumored to be repurposed for first Red Dragon Mission",
+      reuse_count: 0,
+    },
+    {
       capsule_serial: "C202",
       capsule_id: "dragon2",
       status: "active",
@@ -125,10 +312,20 @@ export default function Capsules() {
       details: "Currently in construction for use in DM-2",
       reuse_count: 0,
     },
+    {
+      capsule_serial: "C205",
+      capsule_id: "dragon2",
+      status: "active",
+      original_launch: null,
+      original_launch_unix: null,
+      missions: [],
+      landings: 0,
+      type: "Dragon 2.0",
+      details:
+        "In construction for use in first mission in contract under the CCtCap contract",
+      reuse_count: 0,
+    },
   ];
-  const numberOfPages = Math.ceil(capsuleData.length / numberOfItem);
-  const Data = capsuleData.slice(firstIndex, lastIndex);
-  const numbers = [...Array(numberOfPages + 1).keys()].slice(1);
   const allCategory = [];
   for (let obj of capsuleData) {
     const keys = Object.keys(obj);
@@ -139,24 +336,51 @@ export default function Capsules() {
   const arrayOfValue = [];
   for (const obj of capsuleData) {
     const value = obj[category];
-    console.log("obj: ", obj);
-    console.log("cate: ", category);
     arrayOfValue.push(value);
   }
   const uniqueValue = [...new Set(arrayOfValue)];
+  let data = [];
+  if (category === "all" && selectedValue == null) {
+    data = [...capsuleData];
+    console.log("data form if", data);
+  } else {
+    data = capsuleData.filter((item) => item[category] === selectedValue);
+  }
+  console.log("selectedValue", selectedValue);
+  console.log("category:", category);
+  const numberOfPages = Math.ceil(data.length / numberOfItem);
+  const numbers = [...Array(numberOfPages + 1).keys()].slice(1);
 
-  // const newData = capsuleData.filter(
-  // (item) => item[category[value]] === capsuleData[category[selectedValue]]
-  // );
-  console.log("array of value: ", arrayOfValue);
-  console.log("array of unique value: ", uniqueValue);
   function jumpToPage(page) {
     setCurrentPage(page);
   }
-  function handleCategory(e) {
-    setCategory(e.target.value);
+  function handleNextPage() {
+    if (currentPage !== numberOfPages) setCurrentPage(currentPage + 1);
+  }
+  function handlePrevPage() {
+    if (currentPage !== 1) setCurrentPage(currentPage - 1);
   }
 
+  function handleCategory(e) {
+    if (e.target.value === "all") {
+      data = [...capsuleData];
+      setCategory(e.target.value);
+      setShowSelect(false);
+      setSelectedValue(null);
+    } else {
+      setCategory(e.target.value);
+      setShowSelect(true);
+      setSelectedValue(null);
+    }
+  }
+  function handleSelectedValue(e) {
+    setSelectedValue(e.target.value);
+    setShowSelect(true);
+    setCurrentPage(1);
+  }
+
+  let newData = data.slice(firstIndex, lastIndex);
+  console.log("newData: ", newData);
   return (
     <>
       <div className="capsules">
@@ -165,22 +389,42 @@ export default function Capsules() {
           subHeading={"SERVICE TO EARTH ORBIT, MOON, MARS AND BEYOND"}
           titleClass={"capsule"}
         />
-        <div>
-          <select name="category" id="category" onChange={handleCategory}>
+        <div className="select-container">
+          <label htmlFor="category">Select Category :</label>
+          <select
+            name="category"
+            id="category"
+            className="select-box"
+            onChange={handleCategory}
+          >
+            <option className="select-box" value="all">
+              All
+            </option>
             {uniqueCategory.map((category, index) => (
-              <option value={category} key={index}>
+              <option className="select-box" value={category} key={index}>
                 {category}
               </option>
             ))}
           </select>
-          <span>Select {category}:</span>
-          <select name="value" id="value">
-            {uniqueValue.map((item, index) => (
-              <option value={item} key={index}>
-                {item}
-              </option>
-            ))}
-          </select>
+          {showSelect && (
+            <>
+              <label htmlFor="value">Select {category} :</label>
+              <select
+                name="value"
+                id="value"
+                className="select-box"
+                onChange={handleSelectedValue}
+              >
+                <option value={null}>Select</option>
+
+                {uniqueValue.map((item, index) => (
+                  <option value={item} key={index}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
         </div>
         <table>
           <thead>
@@ -193,35 +437,43 @@ export default function Capsules() {
             </tr>
           </thead>
           <tbody>
-            {Data.map((item) => (
+            {newData.length == 0 ? (
               <>
-                <tr>
+                <h2>Empty Data</h2>
+              </>
+            ) : (
+              newData.map((item, i) => (
+                <tr key={i}>
                   <td>{item.capsule_serial}</td>
                   <td>{item.status}</td>
                   <td>{item.landings}</td>
                   <td>{item.type}</td>
                   <td>{item.details}</td>
                 </tr>
-              </>
-            ))}
+              ))
+            )}
           </tbody>
         </table>
+        <div className="pagination">
+          <button className="secondary-btn" onClick={handlePrevPage}>
+            Prev
+          </button>
+          <ul>
+            {numbers.map((n, i) => (
+              <li
+                className={currentPage == n ? "active-page" : ""}
+                key={i}
+                onClick={() => jumpToPage(n)}
+              >
+                {n}
+              </li>
+            ))}
+          </ul>
+          <button className="secondary-btn" onClick={handleNextPage}>
+            Next
+          </button>
+        </div>
       </div>
-      <button onClick={() => setCurrentPage(currentPage - 1)}>Prev</button>
-      <ul>
-        {numbers.map((n, i) => (
-          <li key={i} onClick={() => jumpToPage(n)}>
-            {n}
-          </li>
-        ))}
-      </ul>
-      <button
-        onClick={() => {
-          setCurrentPage(currentPage + 1);
-        }}
-      >
-        Next
-      </button>
     </>
   );
 }

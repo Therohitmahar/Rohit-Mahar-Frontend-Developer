@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700&display=swap");
 :root {
-  --text-clr: #f9eed8ff;
+  --text-clr: rgb(248, 241, 228);
   --secondary: #da9f53ff;
   --primary: #bc7132ff;
   --background-clr: #001025;
   --darker: #603b26ff;
   --extra-clr: #fbc056;
   --primary-font: "Kanit", sans-serif;
+  --transparent-bg: #00040799;
 }
 
 * {
@@ -50,7 +51,8 @@ body *::selection {
   background: none;
   border: 2px solid var(--text-clr);
   transition: 0.45s cubic-bezier(0.215, 0.61, 0.355, 1);
-  width: 100%;
+  max-width: 100%;
+  width: 20%;
 }
 .primary-btn:hover,
 .secondary-btn:hover {
@@ -59,28 +61,37 @@ body *::selection {
 }
 table {
   color: var(--text-clr);
-  width: 80%;
+  width: 90%;
+  min-height: 400px;
   margin-inline: auto;
-  padding: 10px;
+  /* padding: 10px 0; */
   text-transform: uppercase;
   font-weight: 400;
-  border: none;
+  border: 1px solid rgba(248, 241, 228, 0.507);
   text-align: left;
-  /* backdrop-filter: blur(5px); */
+}
+table tbody {
+  text-align: center;
 }
 table tbody tr,
 table thead tr {
   display: grid;
   grid-template-columns: repeat(4, 1fr) 35%;
 }
-
-tr:nth-child(odd) {
-  background-color: #000407;
+table thead tr th,
+table td {
+  text-align: center;
+}
+table thead tr:nth-child(odd) {
+  background-color: #00040799;
+}
+table tbody tr:nth-child(even) {
+  background-color: #00040799;
 }
 table tr {
   display: block;
   padding: 20px 0;
-  /* border: 1px double; */
+  border-bottom: 1px double rgba(248, 241, 228, 0.5);
 }
 
 table tr td {
@@ -250,10 +261,54 @@ footer span {
 .page-title.capsule {
   background-image: url(https://drive.google.com/u/0/uc?id=1_7cq_oY4zms80XBs2JxU3v2Nn-9V9Z8t&export=download);
   background-size: cover;
+  background-position: center;
 }
 ul {
   display: flex;
 }
 ul li {
   cursor: pointer;
+}
+.select-box {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-family: var(--primary-font);
+  text-transform: uppercase;
+  background-color: var(--transparent-bg);
+  color: var(--text-clr);
+  text-align: center;
+  width: 90%;
+  display: block;
+  margin: 10px;
+}
+.pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  color: var(--text-clr);
+}
+.pagination ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.pagination ul li {
+  padding: 10px 20px;
+  border: 1px solid;
+  transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.pagination ul li:hover,
+.active-page {
+  background-color: var(--text-clr);
+  color: var(--background-clr);
+}
+.select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--text-clr);
+}
+.select-container label {
+  font-size: 1.2rem;
 }
