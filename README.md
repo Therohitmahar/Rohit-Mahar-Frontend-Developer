@@ -1,5 +1,5 @@
 Resources used:
-Vite
-React-Router-dom
-Lucide-icons
-aos
+Vite,
+React-Router-dom,
+Lucide-icons,
+aos,
