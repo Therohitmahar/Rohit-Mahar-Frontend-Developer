@@ -11,7 +11,7 @@ export default function PageTitle({ heading, subHeading, titleClass }) {
         <h3 data-aos="fade-up" data-aos-duration="2000">
           {subHeading}
         </h3>
-        <ChevronDown size={44} strokeWidth={1} />{" "}
+        <ChevronDown size={48} strokeWidth={1} />{" "}
       </section>
     </>
   );

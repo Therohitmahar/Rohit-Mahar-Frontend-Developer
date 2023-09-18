@@ -2,14 +2,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 const appContext = createContext();
 export default function Context({ children }) {
-  useEffect(() => {
-    setIsLoading(true);
-    fetchCapsuleData();
-    fetchCoresData().then(() => {
-      setIsLoading(false);
-    });
-  }, []);
-  const value = { capsuleData, coresData };
+  const [showNav, setShowNav] = useState(false);
+  const [modalData, setModalData] = useState([]);
+  const value = { setShowNav, showNav, setModalData, modalData };
   return <appContext.Provider value={value}>{children}</appContext.Provider>;
 }
 

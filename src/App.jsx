@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     Aos.init();
   });
-  //TODO: remove mission from select in capsules
   //TODO: modal for single item
   return (
     <>

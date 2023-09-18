@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import SingleCapsule from "../Components/SingleCapsule";
+import SingleCapsule from "../Components/SingleData";
 import PageTitle from "../Components/PageTitle";
 import Pagination from "../Components/Pagination";
-import { useData } from "../Context/Context";
 import "aos/dist/aos.css";
+import { useData } from "../Context/Context";
+import SingleData from "../Components/SingleData";
 export default function Capsules() {
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("all");
   const [selectedValue, setSelectedValue] = useState(null);
   const [showSelect, setShowSelect] = useState(false);
   const [capsuleData, setCapsuleData] = useState([]);
-
+  const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { setShowNav, setModalData } = useData();
+
   async function fetchCapsuleData(key) {
     try {
       setIsLoading(true);
@@ -25,6 +28,7 @@ export default function Capsules() {
   }
   useEffect(() => {
     fetchCapsuleData();
+    setShowNav(false);
   }, []);
   const numberOfItem = 3;
   const lastIndex = currentPage * numberOfItem;
@@ -159,7 +163,13 @@ export default function Capsules() {
               </thead>
               <tbody>
                 {newData.map((item, i) => (
-                  <tr key={i}>
+                  <tr
+                    key={i}
+                    onClick={() => {
+                      setShowModal(true);
+                      setModalData(item);
+                    }}
+                  >
                     <td>{item.capsule_serial}</td>
                     <td>{item.status}</td>
                     <td>{item.landings}</td>
@@ -168,6 +178,7 @@ export default function Capsules() {
                   </tr>
                 ))}
               </tbody>
+              {showModal && <SingleData setShowModal={setShowModal} />}
             </table>
             <Pagination
               {...{

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { useData } from "../Context/Context";
 
 export default function Navbar() {
-  const [showNav, setShowNav] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  const { setShowNav, showNav } = useData();
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log("inner", window.innerHeight);
-      console.log("scrollY", window.screenY);
       if (window.scrollY > window.innerHeight) {
         setShowBackground(true);
       } else {
@@ -35,12 +34,12 @@ export default function Navbar() {
         <Link to="/humanship">Human Spaceflights</Link>
         <Link to="/starshield">Starshield</Link>
       </ul>
-      <label class={"burger"} htmlFor="burger">
+      <label className={"burger"} htmlFor="burger">
         <input
           type="checkbox"
           id="burger"
-          value={showNav}
-          onChange={() => setShowNav(!showNav)}
+          checked={showNav}
+          onChange={(e) => setShowNav(e.target.checked)}
         />
         <span></span>
         <span></span>

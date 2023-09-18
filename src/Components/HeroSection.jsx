@@ -13,8 +13,8 @@ export default function HeroSection() {
           <button onClick={() => navigate("capsules")} className="primary-btn">
             Learn More
           </button>
-          <ChevronDown size={44} strokeWidth={1} />{" "}
         </div>
+        <ChevronDown size={44} strokeWidth={1} />{" "}
         <img
           src="https://drive.google.com/u/0/uc?id=1DHlX635p7JPrZAhk_PdHspljimu8lUEA&export=download"
           alt="Hero"

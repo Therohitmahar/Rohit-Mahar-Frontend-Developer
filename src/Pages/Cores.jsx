@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PageTitle from "../Components/PageTitle";
 import Pagination from "../Components/Pagination";
+import { useData } from "../Context/Context";
 
 export default function Cores() {
   const [coreCategory, setCoreCategory] = useState("all");
   const [showInput, setShowInput] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [coresData, setCoresData] = useState([]);
-  const [filterSearch, setFilterSearch] = useState([]);
   const [showFiltered, setShowFiltered] = useState(false);
-  async function fetchCoresData(key) {
+  const { setShowNav } = useData();
+  async function fetchCoresData() {
     try {
       const data = await fetch("https://api.spacexdata.com/v3/cores");
       const jsonData = await data.json();
@@ -18,30 +19,17 @@ export default function Cores() {
       console.log("error", error);
     }
   }
+
   useEffect(() => {
     fetchCoresData();
+    setShowNav(false);
   }, []);
 
   function handleCoreCategory(e) {
     setCoreCategory(e.target.value);
-    if (e.target.value === "all") {
-      setShowInput(false);
-    } else {
-      setShowInput(true);
-    }
+    setShowInput(e.target.value !== "all");
   }
-  function handleInputChange(e) {
-    setInputValue(e.target.value);
-  }
-  useEffect(() => {
-    if (coreCategory !== "all") {
-      const returned = uniqueValue.filter((item) => {
-        return item && item.toLowerCase().includes(inputValue.toLowerCase());
-      });
-      setFilterSearch(returned);
-    }
-    console.log("filterSearch1111", filterSearch);
-  }, [inputValue, coreCategory]);
+
   const filteredObject = coresData.filter(
     (item) => item[coreCategory] == inputValue
   );
@@ -51,68 +39,17 @@ export default function Cores() {
   const lastIndex = currentPage * itemPerPage;
   const firstIndex = (currentPage - 1) * itemPerPage;
   const numberOfPages = Math.ceil(coresData.length / itemPerPage);
-  let newCoreData = coresData.slice(firstIndex, lastIndex);
+  const newCoreData = coresData.slice(firstIndex, lastIndex);
   const numbers = [...Array(numberOfPages + 1).keys()].slice(1);
-  const allPossible = [];
-  for (let obj of coresData) {
-    const value = obj[coreCategory];
-    allPossible.push(value);
-  }
-  const uniqueValue = [...new Set(allPossible)];
+
   return (
     <div className="cores-page">
       <PageTitle
         heading="Cores"
-        subHeading={"Core for future of space"}
+        subHeading={"Core for the future of space"}
         titleClass="cores"
       />
       <h1 className="title">Cores</h1>
-      <div className="select-container">
-        <label htmlFor="category">Select Category :</label>
-        <select
-          name="category"
-          id="category"
-          className="select-box"
-          value={coreCategory}
-          onChange={handleCoreCategory}
-        >
-          <option className="select-box" value="all">
-            All
-          </option>
-          <option className="select-box" value={"core_serial"}>
-            Core Serial
-          </option>
-          <option className="select-box" value={"status"}>
-            Status
-          </option>
-          <option className="select-box" value={"details"}>
-            Details
-          </option>
-        </select>
-        {showInput && (
-          <div className="cores-search-container">
-            <label htmlFor="SearchCore">Search Core : </label>
-            <input
-              type="text"
-              id="SearchCore"
-              placeholder="Try Typing: active, dead"
-              value={inputValue}
-              onChange={handleInputChange}
-            />
-            {filterSearch &&
-              filterSearch.slice(0, 3).map((item) => (
-                <h5
-                  onClick={() => {
-                    setInputValue(item);
-                    setShowFiltered(true);
-                  }}
-                >
-                  {item}
-                </h5>
-              ))}
-          </div>
-        )}
-      </div>
       <table>
         <thead>
           <tr>
@@ -126,7 +63,7 @@ export default function Cores() {
         <tbody>
           {showFiltered
             ? filteredObject.map((core) => (
-                <tr>
+                <tr key={core.core_serial}>
                   <td>{core.core_serial}</td>
                   <td>{core.status}</td>
                   <td>{core.water_landing ? "Yes" : "No"}</td>
@@ -135,7 +72,7 @@ export default function Cores() {
                 </tr>
               ))
             : newCoreData.map((core) => (
-                <tr>
+                <tr key={core.core_serial}>
                   <td>{core.core_serial}</td>
                   <td>{core.status}</td>
                   <td>{core.water_landing ? "Yes" : "No"}</td>
@@ -154,7 +91,7 @@ export default function Cores() {
             numbers,
           }}
         />
-      )}{" "}
+      )}
     </div>
   );
 }
